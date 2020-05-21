@@ -2,17 +2,17 @@ export default class Modal {
   constructor() {
     // Inject Html first, and then querySelect html element.
     this.injectHTML();
-    this.openModalButtons = document.querySelectorAll('.open-modal');
     this.closeIcon = document.querySelector('.modal__close');
     this.modal = document.querySelector('.modal');
+    // this.openModalButtons = document.querySelectorAll('.open-modal');
     this.events();
   }
 
   events() {
     // listen for open click
-    this.openModalButtons.forEach((el) => {
-      el.addEventListener('click', (e) => this.openTheModal(e));
-    });
+    // this.openModalButtons.forEach((el) => {
+    //   el.addEventListener('click', (e) => this.openTheModal(e));
+    // });
     // listen for close click
     this.closeIcon.addEventListener('click', () => this.closeTheModal());
     // pushes any key
@@ -20,7 +20,7 @@ export default class Modal {
   }
 
   openTheModal(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.modal.classList.add('modal--is-visible');
   }
 
