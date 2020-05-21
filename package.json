@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jaychan688/travel-site#readme",
   "dependencies": {
+    "lazysizes": "^5.2.1-rc2",
     "lodash": "^4.17.15",
     "normalize.css": "^8.0.1"
   },

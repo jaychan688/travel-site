@@ -8,10 +8,10 @@ class RevealOnScroll {
     this.browserHeight = window.innerHeight;
     this.hideInitially();
     this.scrollThrottle = throttle(this.calcCaller, 200).bind(this);
-    this.event();
+    this.events();
   }
 
-  event() {
+  events() {
     window.addEventListener('scroll', this.scrollThrottle);
     window.addEventListener(
       'resize',

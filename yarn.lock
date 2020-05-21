@@ -3019,6 +3019,11 @@ known-css-properties@^0.18.0:
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.18.0.tgz#d6e00b56ee1d5b0d171fd86df1583cfb012c521f"
   integrity sha512-69AgJ1rQa7VvUsd2kpvVq+VeObDuo3zrj0CzM5Slmf6yduQFAI2kXPDQJR2IE/u6MSAUOJrwSzjg5vlz8qcMiw==
 
+lazysizes@^5.2.1-rc2:
+  version "5.2.1-rc2"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.2.1-rc2.tgz#952119348e1da4cf49df2fe76b8fbe7b3fba4e53"
+  integrity sha512-pkaaErZQdfYLTnHjVNotq29GBrCFHfiiCuCJV1Ow5xXg2kFQM/td/Ns2b6NAhbWsw1AM9JKdaykNoqVMLSeZNg==
+
 lcid@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
