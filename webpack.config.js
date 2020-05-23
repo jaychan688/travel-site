@@ -17,7 +17,7 @@ const postCSSPlugins = [
 class RunAfterCompile {
   apply(compiler) {
     compiler.hooks.done.tap('Copy images', () => {
-      fse.copySync('./app/assets/images', './docs/assets/images');
+      fse.copySync('./src/assets/images', './docs/assets/images');
     });
   }
 }
@@ -36,22 +36,34 @@ const cssConfig = {
 };
 
 const pages = fse
-  .readdirSync('./app')
+  .readdirSync('./src')
   .filter((file) => {
     return file.endsWith('.html');
   })
   .map((page) => {
     return new HtmlWebpackPlugin({
       filename: page,
-      template: `./app/${page}`,
+      template: `./src/${page}`,
     });
   });
 
 const config = {
-  entry: './app/assets/js/App.js',
+  entry: './src/assets/js/App.js',
   plugins: pages,
   module: {
-    rules: [cssConfig],
+    rules: [
+      cssConfig,
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
 };
 
@@ -59,32 +71,23 @@ if (currentTask === 'start') {
   cssConfig.use.unshift('style-loader');
   config.output = {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'app'),
+    path: path.resolve(__dirname, 'src'),
   };
   config.devServer = {
     // html file auto reload
     before: (app, server) => {
-      server._watch('./app/**/*.html');
+      server._watch('./src/**/*.html');
     },
-    contentBase: path.join(__dirname, 'app'),
+    contentBase: path.join(__dirname, 'src'),
     hot: true,
     port: 3000,
+    historyApiFallback: true,
     // host: '0.0.0.0',
   };
   config.mode = 'development';
 }
 
 if (currentTask === 'build') {
-  config.module.rules.push({
-    test: /\.js$/,
-    exclude: /(node_modules)/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-      },
-    },
-  });
   cssConfig.use.unshift(MiniCssExtractPlugin.loader);
   postCSSPlugins.push(require('cssnano'));
   config.output = {

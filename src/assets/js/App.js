@@ -1,8 +1,8 @@
 import '../styles/styles.css';
 import 'lazysizes';
-import MobileMenu from '../js/modules/MobileMenu.js';
-import RevealOnScroll from '../js/modules/RevealOnScroll';
-import StickyHeader from '../js/modules/StickyHeader';
+import MobileMenu from './modules/MobileMenu.js';
+import RevealOnScroll from './modules/RevealOnScroll';
+import StickyHeader from './modules/StickyHeader';
 
 new StickyHeader();
 new RevealOnScroll(document.querySelectorAll('.feature-item'), 75);
